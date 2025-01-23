@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package user;
+option go_package = "proto/user/user";
+
+message GetUserLastLoginRequest {
+    string email = 1;
+}
+
+message GetUserLastLoginResponse {
+    string content = 1;
+}
+
+service UserService {
+    rpc GetUserLastLogin(GetUserLastLoginRequest) returns (stream GetUserLastLoginResponse) {}
+}
