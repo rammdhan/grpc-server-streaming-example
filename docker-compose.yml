@@ -1,0 +1,15 @@
+services:
+  cache:
+    image: redis:latest
+    restart: always
+    ports:
+      - '${REDIS_PORT_PUBLIC}:${REDIS_PORT}'
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_DATABASES=${REDIS_DATABASES}
+    volumes: 
+      - cache:/data
+volumes:
+  cache:
+    driver: local
